@@ -20,7 +20,7 @@ yarn add graphql-compose graphql graphql-compose-schema-wrapper
   path selector) and then use `wrapResolvers`, `wrapResolverHelper` or `wrapResolverFieldHelper`
   to wrap what you need
 
-## Use `wrapResolvers`
+### Use `wrapResolvers`
 ```js
 // wrap with wrapResolvers
 GQC.rootQuery().addFields(
@@ -39,7 +39,7 @@ GQC.rootQuery().addFields(
 
 ```
 
-## Use `wrapResolverHelper` and `wrapResolverFieldHelper`
+### Use `wrapResolverHelper` and `wrapResolverFieldHelper`
 ```js
 // wrap with path selector helper
 // setup your schema
