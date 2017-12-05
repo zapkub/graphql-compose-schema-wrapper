@@ -65,6 +65,14 @@ wrapResolverFieldHelper(['Query.getVersionInfoWrap.$get.version'], rp => {
 })
 ```
 
+# Development
+- clone this repository
+- Run command below
+```
+yarn tsc // compile typescript ( optional watch use -w )
+yarn dev // start graphql server
+```
+
 # Limitation (PLEASE READ CAREFULLY)
 
 * `graphql-compose-schema-wrapper` **cannot use with nested Resolver inside
