@@ -39,7 +39,7 @@ GQC.rootQuery().addFields(
 
 ```
 
-## User `wrapResolverHelper` and `wrapResolverFieldHelper`
+## Use `wrapResolverHelper` and `wrapResolverFieldHelper`
 ```js
 // wrap with path selector helper
 // setup your schema
