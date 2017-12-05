@@ -59,29 +59,29 @@ info.addResolver({
 })
 
 GQC.rootQuery().addFields({
-  version: info.getResolver('get')
+  getVersionInfo: info.getResolver('get')
 })
 GQC.rootMutation().addFields({
-  version: info.getResolver('set')
+  updateVersionInfo: info.getResolver('set')
 })
 
 /**
  * user wrap helper after setup your rootQuery and rootMutation
- * limitation: grpahql-compose-wrap-help able to 
+ * limitation: grpahql-compose-wrap-help able to
  * wrap only field and resolver on rootQuery, rootMutation only
  */
-wrapResolverHelper<any, any>(['Query.version.$get', 'Mutation.version.$set'], next => rp => {
-  console.log('this resolver is wrapped')
-  return next(rp)
-})
+wrapResolverHelper<any, any>(
+  ['Query.version.$get', 'Mutation.version.$set'],
+  next => rp => {
+    console.log('this resolver is wrapped')
+    return next(rp)
+  }
+)
 
 wrapResolverFieldHelper<any, any>(['Query.version.$get.version'], rp => {
   console.log('this field is wrapped', rp)
   return rp.source
 })
-
-
-
 
 app.use(
   '/graphql',

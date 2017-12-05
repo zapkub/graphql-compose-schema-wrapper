@@ -6,3 +6,4 @@ tslint.json
 *.ts
 .vscode
 README.md
+!*d.ts

@@ -18,7 +18,7 @@
     "dev": "nodemon example/index.js"
   },
   "name": "graphql-compose-schema-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "repository": "git@github.com:zapkub/graphql-compose-wrap-helper.git",
   "author": "Rungsikorn Rungsikavarnich <rungsikorn@icloud.com>",
