@@ -2,7 +2,7 @@ import { graphiqlExpress, graphqlExpress } from 'apollo-server-express'
 import * as express from 'express'
 import * as bodyPaser from 'body-parser'
 import { TypeComposer, Resolver, GQC } from 'graphql-compose'
-import { wrapResolverHelper, wrapResolverFieldHelper } from '../lib'
+import { wrapResolvers, wrapResolverHelper, wrapResolverFieldHelper } from '../lib'
 import { resolve } from 'path'
 
 const app = express()
@@ -70,17 +70,27 @@ GQC.rootMutation().addFields({
  * limitation: grpahql-compose-wrap-help able to
  * wrap only field and resolver on rootQuery, rootMutation only
  */
+
+// wrap with wrapResolvers
+GQC.rootQuery().addFields(wrapResolvers({
+  getVersionInfoWrap: info.getResolver('get')
+}, (next) => rp => {
+  console.log('this resolver wrap by wrapResolvers')
+  return next(rp)
+}))
+
+// wrap with path helper
 wrapResolverHelper<any, any>(
-  ['Query.version.$get', 'Mutation.version.$set'],
+  ['Query.getVersionInfo.$get', 'Mutation.updateVersionInfo.$set'],
   next => rp => {
     console.log('this resolver is wrapped')
     return next(rp)
   }
 )
 
-wrapResolverFieldHelper<any, any>(['Query.version.$get.version'], rp => {
-  console.log('this field is wrapped', rp)
-  return rp.source
+wrapResolverFieldHelper<any, any>(['Query.getVersionInfo.$get.version'], rp => {
+  console.log('this field is wrapped')
+  return rp.source.version
 })
 
 app.use(

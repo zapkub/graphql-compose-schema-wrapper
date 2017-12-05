@@ -58,7 +58,7 @@ function wrapByType<TSource, TContext>(
     const fieldConfig = tc.getField(fieldName)
     tc.extendField(fieldName, {
       ...fieldConfig,
-      resolve: wrapResolve
+      resolve:  (source, args, context) => wrapResolve({source, args, context})
     })
   }
 }
@@ -103,4 +103,11 @@ function wrapResolverHelper<TSource, TContext>(
   })
 }
 
-export { wrapResolverHelper, wrapResolverFieldHelper }
+function wrapResolvers<TSource, TContext>(resolvers, resolverNextRpCb: ResolverNextRpCb<TSource,TContext>) {
+  Object.keys(resolvers).forEach((k) => {
+    resolvers[k] = resolvers[k].wrapResolve(resolverNextRpCb);
+  });
+  return resolvers;
+}
+
+export { wrapResolvers, wrapResolverHelper, wrapResolverFieldHelper }
