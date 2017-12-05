@@ -4,3 +4,5 @@ tsconfig.json
 tslint.json
 .gitignore
 *.ts
+.vscode
+README.md
