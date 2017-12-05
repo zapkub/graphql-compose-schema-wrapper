@@ -20,6 +20,7 @@
   "name": "graphql-compose-schema-wrapper",
   "version": "1.0.2",
   "main": "lib/index.js",
+  "types": "./lib/index.d.ts"
   "repository": "git@github.com:zapkub/graphql-compose-wrap-helper.git",
   "author": "Rungsikorn Rungsikavarnich <rungsikorn@icloud.com>",
   "license": "MIT"
